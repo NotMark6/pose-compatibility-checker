@@ -168,7 +168,7 @@ positions["Wrapped Missionary"] = {
 
 positions["Lotus"] = {
     "actor_can_thrust_A": True,
-"actor_can_thrust_B": True,
+"actor_can_thrust_B": False,
     "faces_aligned": True,
     "hips_aligned": True,
     "A_can_reach_down": True,

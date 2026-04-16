@@ -165,10 +165,10 @@ def check_act(A, B, act_name, direction):
     
     if "needs_head_access" in tags:
         if direction == "A->B" and not position.get("head_access_A_to_B", False):
-            return False, ...
+            return False, f"{actor_label} cannot reach {target_label.lower()}'s head"
         if direction == "B->A" and not position.get("head_access_B_to_A", False):
-            return False, ...
-    
+            return False, f"{actor_label} cannot reach {target_label.lower()}'s head"
+
     if "needs_rear_entry" in tags:
         if not position.get("rear_entry_angle", False):
             return False, f"{actor_label} cannot perform this action due to positioning angle"
@@ -181,14 +181,18 @@ def check_act(A, B, act_name, direction):
      if not position.get("oral_alignment", False):
         return False, f"{actor_label} cannot perform this action due to body orientation"
     
-    if "needs_chest_access" in tags and not position.get("chest_access", False):
-        return False, f"{actor_label} cannot align chest with {target_label.lower()}"
-
     if "needs_butt_access" in tags:
-        if direction == "A->B" and not position.get("butt_access_A_to_B", False):
-            return False, f"{actor_label} cannot access {target_label.lower()}'s backside"
-        if direction == "B->A" and not position.get("butt_access_B_to_A", False):
-            return False, f"{actor_label} cannot access {target_label.lower()}'s backside"
+        if direction == "A->B":
+            if not position.get("butt_access_A_to_B", False):
+                return False, f"{actor_label} cannot reach {target_label.lower()}'s rear"
+            if not position.get("rear_swing_access_A_to_B", False):
+                return False, f"{actor_label} cannot perform this action due to movement restriction"
+
+        elif direction == "B->A":
+            if not position.get("butt_access_B_to_A", False):
+                return False, f"{actor_label} cannot reach {target_label.lower()}'s rear"
+            if not position.get("rear_swing_access_B_to_A", False):
+                return False, f"{actor_label} cannot perform this action due to movement restriction"
 
     if "needs_penis" in tags and not actor.get("penis", False):
         return False, f"{actor_label} has no penis"
@@ -232,6 +236,7 @@ def check_act(A, B, act_name, direction):
             return False, f"{actor_label} cannot access {target_label.lower()}'s lower body"
         if direction == "B->A" and not position.get("genital_access_B_to_A", False):
             return False, f"{actor_label} cannot access {target_label.lower()}'s lower body"
+        
 
     if "needs_neck_access" in tags:
         if direction == "A->B" and not position.get("neck_access_A_to_B", False):
