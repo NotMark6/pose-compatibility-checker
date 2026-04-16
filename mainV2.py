@@ -87,8 +87,8 @@ position: Dict[str, object] = {
 act_tags: Dict[str, List[str]] = {
     "Scratching": ["needs_reach"],
 
-    "Vaginal Penetration": ["needs_penis", "needs_vagina", "needs_rear_entry", "needs_actor_control"],
-"Anal Penetration": ["needs_penis", "needs_rear_entry", "needs_actor_control"],
+    "Vaginal Penetration": ["needs_penis", "needs_vagina", "needs_actor_control"],
+    "Anal Penetration": ["needs_penis", "needs_actor_control"],
 
     "Fellatio": ["needs_penis", "needs_face", "needs_oral_alignment"],
     "Deep Throat": ["needs_penis", "needs_face", "needs_oral_alignment"],
@@ -151,10 +151,6 @@ def check_act(A, B, act_name, direction):
     if "needs_free_hand" in tags:
         if not position.get("has_free_hand", False):
             return False, f"{actor_label} cannot use hands freely in this position"
-    
-    if "needs_actor_control" in tags:
-        if direction == "B->A" and position.get("A_facing_away", False):
-            return False, f"{actor_label} cannot perform this action due to body control limitation"
     
     # Anatomy checks 
     if "needs_rear_swing" in tags:
