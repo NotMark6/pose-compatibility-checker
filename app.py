@@ -187,7 +187,7 @@ positions["Lotus"] = {
     "oral_alignment": False,
     "chest_alignment": False,
     "rear_entry_angle": False,
-    "rear_swing_access_A_to_B": False,
+    "rear_swing_access_A_to_B": True,
     "rear_swing_access_B_to_A": False,
     "A_can_use_feet": False,
     "B_can_use_feet": False,
