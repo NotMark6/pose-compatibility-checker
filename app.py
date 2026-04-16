@@ -77,6 +77,8 @@ positions["Twisted Rodeo"] = {
 
 
 positions["Missionary"] = {
+    "actor_can_thrust_A": True,
+    "actor_can_thrust_B": False,
     "faces_aligned": True,
     "hips_aligned": True,
     "A_can_reach_down": True,
@@ -165,6 +167,8 @@ positions["Wrapped Missionary"] = {
 
 
 positions["Lotus"] = {
+    "actor_can_thrust_A": True,
+"actor_can_thrust_B": True,
     "faces_aligned": True,
     "hips_aligned": True,
     "A_can_reach_down": True,
@@ -329,6 +333,8 @@ positions["Titjob / Chest Stimulation"] = {
 }
 
 positions["Full Nelson"] = {
+    "actor_can_thrust_A": True,
+"actor_can_thrust_B": False,
     "faces_aligned": False,
     "hips_aligned": True,
 
@@ -453,6 +459,8 @@ positions["Suspended Full Nelson (Knees & Head)"] = {
 
 
 positions["Pile Driver"] = {
+    "actor_can_thrust_A": True,
+"actor_can_thrust_B": False,
     "faces_aligned": False,
     "hips_aligned": True,
 
@@ -506,6 +514,8 @@ positions["Twisted Pile Driver"] = {
 
 
 positions["Saint"] = {
+    "actor_can_thrust_A": True,
+    "actor_can_thrust_B": True,
     "faces_aligned": True,
     "hips_aligned": True,
 
@@ -578,6 +588,8 @@ positions["Wrapped Saint"] = {
 
 
 positions["Scissors"] = {
+    "actor_can_thrust_A": True,
+"actor_can_thrust_B": True,
     "faces_aligned": True,
     "hips_aligned": True,
 
@@ -646,6 +658,8 @@ positions["Wrapped Scissors"] = {
 
 
 positions["Sinner"] = {
+    "actor_can_thrust_A": True,
+"actor_can_thrust_B": False,
     "faces_aligned": True,
     "hips_aligned": True,
 
@@ -904,6 +918,9 @@ positions["Shotgun Open Butterfly"] = {
 }
 
 positions["Wheelbarrow"] = {
+    "has_free_hand": False,
+    "actor_can_thrust_A": True,
+    "actor_can_thrust_B": False,
     "faces_aligned": False,
     "hips_aligned": True,
     
@@ -919,7 +936,7 @@ positions["Wheelbarrow"] = {
 
     "head_access_A_to_B": False,
     "head_access_B_to_A": False,
-    "has_free_hand": False,
+    
     "chest_access": False,
 
     # 🔥 Directional (key for this family)
