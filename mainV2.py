@@ -63,6 +63,7 @@ roles: Dict[str, Dict[str, object]] = {
 # Edit per position
 # =========================
 position: Dict[str, object] = {
+    "has_free_hand": True,
     "faces_aligned": False,
     "hips_aligned": True,
     "A_can_reach_down": True,
@@ -75,7 +76,6 @@ position: Dict[str, object] = {
     "face_access": False,
     "requires_flexibility": False,
     "chest_access": False,
-    "B_can_reach_up": True,  #  VERY IMPORTANT
     "genital_access_B_to_A": True,
 }
 
@@ -104,13 +104,12 @@ act_tags: Dict[str, List[str]] = {
 
     "Titjob": ["actor_needs_breasts", "target_needs_penis", "needs_chest_alignment"],
 
-    "Handjob": ["needs_hand", "needs_genital_access", "target_needs_penis"],
+    "Handjob": ["needs_hand", "needs_genital_access", "target_needs_penis", "needs_free_hand"],
 
-    "Vaginal Fingering": ["needs_vagina", "needs_hand", "needs_genital_access"],
+    "Vaginal Fingering": ["needs_hand", "needs_genital_access", "needs_free_hand"],
     "Anal Fingering": ["needs_hand", "needs_butt_access", "needs_rear_entry"],
 
-    "Breast Stimulation (Manual)": ["needs_breasts", "needs_hand"],
-    "Nipple Stimulation (Manual)": ["needs_hand", "needs_chest_access"],
+    "Breast Stimulation (Manual)": ["needs_hand", "needs_chest_access", "needs_free_hand"],
 
     "Choking": ["needs_reach", "needs_neck_access"],
     "Hair Pulling": ["needs_hand", "needs_head_access"],
@@ -149,30 +148,11 @@ def check_act(A, B, act_name, direction):
     # =========================
     # FAIL CONDITIONS
     # =========================
+    if "needs_free_hand" in tags:
+        if not position.get("has_free_hand", False):
+            return False, f"{actor_label} cannot use hands freely in this position"
+    # Anatomy checks 
 
-    # Anatomy checks
-    # DEBUGGING OUTPUT FOR SPANKING    
-    if act_name == "Spanking":
-        print(
-        "DEBUG SPANKING",
-        direction,
-        "needs_hand=", "needs_hand" in tags,
-        "needs_butt_access=", "needs_butt_access" in tags,
-        "needs_rear_swing=", "needs_rear_swing" in tags,
-        "A_can_reach_down=", position.get("A_can_reach_down", False),
-        "B_can_reach_up=", position.get("B_can_reach_up", False),
-        "butt_access_A_to_B=", position.get("butt_access_A_to_B", False),
-        "butt_access_B_to_A=", position.get("butt_access_B_to_A", False),
-        "rear_swing_access_A_to_B=", position.get("rear_swing_access_A_to_B", False),
-        "rear_swing_access_B_to_A=", position.get("rear_swing_access_B_to_A", False),
-    )
-        
-    if act_name == "Spanking":
-        print("CHECK", direction,
-          position.get("A_can_reach_down"),
-          position.get("butt_access_A_to_B"),
-          position.get("rear_swing_access_A_to_B"))
-    
     if "needs_rear_swing" in tags:
         if direction == "A->B" and not position.get("rear_swing_access_A_to_B", False):
             return False, f"{actor_label} cannot perform this action due to movement restriction"

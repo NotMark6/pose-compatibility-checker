@@ -906,7 +906,7 @@ positions["Shotgun Open Butterfly"] = {
 positions["Wheelbarrow"] = {
     "faces_aligned": False,
     "hips_aligned": True,
-
+    
     "A_can_reach_down": True,
     "B_can_reach_up": False,
 
@@ -919,7 +919,7 @@ positions["Wheelbarrow"] = {
 
     "head_access_A_to_B": False,
     "head_access_B_to_A": False,
-
+    "has_free_hand": False,
     "chest_access": False,
 
     # 🔥 Directional (key for this family)
